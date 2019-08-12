@@ -9,8 +9,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
-    - name: Run a one-line script
-      run: echo Hello, world!
     - name: Run a multi-line script
       run: |
         #!/usr/bin/env bash
@@ -19,7 +17,7 @@ jobs:
         set -o pipefail
         set -o xtrace
         make all
-        illegal_htaccess_content="$( find content -name '.htaccess' -type f -exec grep --extended-regexp --invert-match '^(#|ErrorDocument)' {} \\; )"
+        illegal_htaccess_content="$( find content -name '.htaccess' -type f -exec grep --extended-regexp --invert-match '^(#|ErrorDocument)' {} \; )"
         if [[ -n "$illegal_htaccess_content" ]] ; then
           echo "Failing build due to illegal content in .htaccess files, only ErrorDocument is allowed:" >&2
           echo "$illegal_htaccess_content" >&2
