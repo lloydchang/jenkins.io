@@ -1,4 +1,3 @@
-
 BUILD_DIR=build
 OUTPUT_DIR=$(BUILD_DIR)/_site
 AWESTRUCT_CONFIG=--source-dir=content --output-dir=$(OUTPUT_DIR)
